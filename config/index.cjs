@@ -67,4 +67,3 @@ const USER_CONFIG = {
 }
 
 module.exports = USER_CONFIG
-
