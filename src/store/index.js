@@ -22839,6 +22839,7 @@ export const DEFAULT_OUTPUT = {
   constellationFortune: '福星高照! 去争取自己想要的一切吧!',
   holidaytts: '嘿嘿，今天不告诉你~',
   courseSchedule: '今天没有课哟~',
+  remind: '喝水'
 }
 
 export const RUN_TIME_STORAGE = {
