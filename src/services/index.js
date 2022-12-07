@@ -272,6 +272,21 @@ export const getEarthyLoveWords = async () => {
 }
 
 /**
+ * 喝水提醒
+ * @returns {Promise<String>} 喝水提醒
+ */
+ export const getDrinkWaterRemind = async () => {
+  if (config.SWITCH && config.SWITCH.earthyLoveWords === false) {
+    return ''
+  }
+  var reminds = ['该喝水啦',
+  '工作忙碌的时候也要补充水分哦','多喝热水','今天喝水任务完成了吗','别咽口水啦，快去倒水','下午三点多，喝水先啦','喝水时间到','不许等到口渴才喝水'];
+
+  var remind= reminds[Math.floor(Math.random()*reminds.length)];
+  return remind
+}
+
+/**
  * 朋友圈文案
  * @returns {Promise<String>} 朋友圈文案内容
  */
@@ -694,6 +709,8 @@ export const getAggregatedData = async () => {
   } = await getOneTalk(config.LITERARY_PREFERENCE)
   // 获取土味情话
   const earthyLoveWords = await getEarthyLoveWords() || DEFAULT_OUTPUT.earthyLoveWords
+  // 获取喝水提示
+  const remind = await getDrinkWaterRemind() || DEFAULT_OUTPUT.remind  
   // 获取朋友圈文案
   const momentCopyrighting = await getMomentCopyrighting() || DEFAULT_OUTPUT.momentCopyrighting
   // 获取毒鸡汤
@@ -781,6 +798,7 @@ export const getAggregatedData = async () => {
       { name: toLowerLine('oneTalk'), value: oneTalk, color: getColor() },
       { name: toLowerLine('talkFrom'), value: talkFrom, color: getColor() },
       { name: toLowerLine('earthyLoveWords'), value: earthyLoveWords, color: getColor() },
+      { name: toLowerLine('remind'), value: remind, color: getColor() },
       { name: toLowerLine('momentCopyrighting'), value: momentCopyrighting, color: getColor() },
       { name: toLowerLine('poisonChickenSoup'), value: poisonChickenSoup, color: getColor() },
       { name: toLowerLine('poetryContent'), value: poetryContent, color: getColor() },
